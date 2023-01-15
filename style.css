@@ -49,6 +49,10 @@ body {
     background-color: #fff;
 }
 
+.hovered {
+    background-color: rebeccapurple;
+}
+
 .color-picker {
     border: 1px solid red;
     height: fit-content;
