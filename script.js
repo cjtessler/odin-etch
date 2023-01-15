@@ -13,7 +13,17 @@ for (let i = 0; i < numCells; i++) {
     // Add cell to dom
     canvas.append(cell);
 }
+// Clear Button
+const clearButton = document.getElementById('clearButton');
+clearButton.addEventListener('click', () => {
+    console.log(canvas.children);
+    const children = canvas.children;
+    for (const child of children) {
+        child.classList.remove('hovered');
+    }
+});
 
+/* FUNCTIONS */
 function colorCell(e) {
     this.classList.add('hovered');
 }
