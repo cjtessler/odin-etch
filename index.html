@@ -15,13 +15,15 @@
         <div class="options">
           <div class="grid-size-contaner">
             <p>Grid Size</p>
-            <input type="text" placeholder="16">
-            <p>
-            <input type="range" min="1" max="100" value="16" class="slider" id="sizeSLider">
-            </p>
+            <input type="text" value="16" id="sizeInput">
+            <div class="slide-container">
+              <input type="range" min="1" max="100" value="16" class="slider" id="slider">
+            </div>
 
           </div>
-          <div class="color-picker">Color</div>
+          <div class="color-picker-container">
+            <input type="color" value="#0000ff">
+          </div>
           <button id="clearButton">Clear</button> 
         </div>
     </div>

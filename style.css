@@ -27,7 +27,7 @@ body {
 }
 
 .container {
-    border: 1px solid red;
+    border: 1px solid black;
     height: fit-content;
     width: 60%;
     padding: 2rem;
@@ -46,19 +46,29 @@ body {
 .canvas {
     width: var(--canvas-size);
     height: var(--canvas-size);
-    border: 1px solid red;
+    border: 1px solid black;
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(var(--grid-size), 1fr);
+    grid-template-rows: repeat(var(--grid-size), 1fr);
+    aspect-ratio: 1;
 }
 
 .cell {
-    border: 1px solid #2b2b2b;
+    border: 1px solid rgba(192, 192, 192, 0.1);
     background-color: #fff;
 }
 
 .hovered {
     background-color: rebeccapurple;
+}
+
+.slide-container {
+    width: 100%;
+}
+
+.slider {
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
 }
 
 .color-picker {
