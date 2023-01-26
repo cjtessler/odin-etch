@@ -6,9 +6,12 @@ const clearButton = document.getElementById('clearButton');
 const canvas = document.querySelector('.canvas');
 const root = document.querySelector(':root');
 
+
 // Setup
-root.style.setProperty('--grid-size', 16);
-drawGrid(16);
+let gridSize = 16;
+let cellColor = "#005cc8"
+root.style.setProperty('--grid-size', gridSize);
+drawGrid(gridSize);
 
 /* EVENT LISTENERS */
 // Size Input
@@ -16,7 +19,8 @@ slider.addEventListener("change", () => {
     const value = slider.value;
     sizeInput.value = value;
     root.style.setProperty('--grid-size', value);
-    drawGrid(sizeInput.value);
+    gridSize = value;
+    drawGrid(gridSize);
 });
 
 // Slider
@@ -24,20 +28,18 @@ sizeInput.addEventListener("change", () => {
     const value = sizeInput.value;
     slider.value = value;
     root.style.setProperty('--grid-size', value);
-    drawGrid(value);
+    gridSize = value;
+    drawGrid(gridSize);
 });
 
 // Color Picker
 picker.addEventListener("change", (event) => {
-    root.style.setProperty("--cell-color", event.target.value);
+    cellColor = event.target.value;
 });
 
 // Clear Button
 clearButton.addEventListener('click', () => {
-    const children = canvas.children;
-    for (const child of children) {
-        child.classList.remove('hovered');
-    }
+    drawGrid(gridSize);
 });
 
 /* FUNCTIONS */
@@ -56,13 +58,11 @@ function drawGrid(width) {
 
         // Add cell to dom
         cells.push(cell);
-        // canvas.append(cell);
     }
 
     canvas.replaceChildren(...cells);
 }
 
-function colorCell(e) {
-    this.classList.add('hovered');
-    // this.style.backgroundColor()
+function colorCell(event) {
+    event.target.style.backgroundColor = cellColor;
 }
