@@ -1,6 +1,7 @@
 :root {
     --canvas-size: 400px;
     --grid-size: 16;
+    --cell-color: #005cc8;
 }
 
 * {
@@ -59,7 +60,7 @@ body {
 }
 
 .hovered {
-    background-color: rebeccapurple;
+    background-color: var(--cell-color);
 }
 
 .slide-container {

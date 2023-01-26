@@ -1,6 +1,8 @@
-// Grid Size Slider
+// Bindings
 const sizeInput = document.getElementById('sizeInput');
 const slider = document.getElementById('slider')
+const picker = document.getElementById('picker')
+const clearButton = document.getElementById('clearButton');
 const canvas = document.querySelector('.canvas');
 const root = document.querySelector(':root');
 
@@ -8,21 +10,37 @@ const root = document.querySelector(':root');
 root.style.setProperty('--grid-size', 16);
 drawGrid(16);
 
-slider.oninput = () => {
+/* EVENT LISTENERS */
+// Size Input
+slider.addEventListener("change", () => {
     const value = slider.value;
     sizeInput.value = value;
     root.style.setProperty('--grid-size', value);
     drawGrid(sizeInput.value);
-};
+});
 
-sizeInput.onchange = () => {
+// Slider
+sizeInput.addEventListener("change", () => {
     const value = sizeInput.value;
     slider.value = value;
     root.style.setProperty('--grid-size', value);
     drawGrid(value);
-}
+});
 
+// Color Picker
+picker.addEventListener("change", (event) => {
+    root.style.setProperty("--cell-color", event.target.value);
+});
 
+// Clear Button
+clearButton.addEventListener('click', () => {
+    const children = canvas.children;
+    for (const child of children) {
+        child.classList.remove('hovered');
+    }
+});
+
+/* FUNCTIONS */
 function drawGrid(width) {
 
     const cells = [];
@@ -44,16 +62,7 @@ function drawGrid(width) {
     canvas.replaceChildren(...cells);
 }
 
-// Clear Button
-const clearButton = document.getElementById('clearButton');
-clearButton.addEventListener('click', () => {
-    const children = canvas.children;
-    for (const child of children) {
-        child.classList.remove('hovered');
-    }
-});
-
-/* FUNCTIONS */
 function colorCell(e) {
     this.classList.add('hovered');
+    // this.style.backgroundColor()
 }
